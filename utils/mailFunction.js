@@ -1,6 +1,6 @@
 const nodemailer = require('nodemailer');
 
-const mailFunction = async (toAddress,resetPassword)=>{
+const mailFunction = async (toAddress,resetPassLongString)=>{
     try{
       const transporter = await nodemailer.createTransport({
         service:"gmail",
@@ -15,7 +15,7 @@ const mailFunction = async (toAddress,resetPassword)=>{
             to:toAddress,
             subject:"Password reset code",
             text:`Follow the link below to set a new password:   
-            ${process.env.CLIENT_RESETFLOW_URL}/${resetPassword} `
+            ${process.env.CLIENT_RESETFLOW_URL}/${resetPassLongString} `
         }
         const result = await transporter.sendMail(mailContents);
         return result;
